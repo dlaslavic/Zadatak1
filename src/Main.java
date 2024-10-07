@@ -3,5 +3,6 @@ public class Main {
         System.out.println("Hello world!");
         System.out.println("Treći sat predavanja!");
         System.out.println("Četvrti sat predavanja!");
+        System.out.println("Peti sat predavanja!");
     }
 }
