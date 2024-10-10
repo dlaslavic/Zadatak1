@@ -3,21 +3,18 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        int parniBroj = 0;
+        int neparniBroj= 0;
 
-        int uneseniBroj1, uneseniBroj2, zbroj;
-
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Odabrani operator: +");
-
-        System.out.println("Molim Vas unesite jedan broj:");
-        uneseniBroj1 = scanner.nextInt();
-
-        System.out.println("Molim Vas unesite drugi broj:");
-        uneseniBroj2 = scanner.nextInt();
-
-        zbroj = uneseniBroj1 + uneseniBroj2;
-        System.out.println(uneseniBroj1 + " + " + uneseniBroj2 + " = " + zbroj);
+        for (int i=1; i < 100; i++){
+            if (i % 2 == 0){
+                parniBroj++;
+            }else{
+                neparniBroj++;
+            }
+        }
+        System.out.println("Broj parnih brojeva je: " + parniBroj);
+        System.out.println("Broj neparnih brojeva je: " + neparniBroj);
     }
 
 }
