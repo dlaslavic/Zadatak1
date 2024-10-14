@@ -9,21 +9,18 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int brojZnamenki;
-        int broj;
+        int unesiBroj;
+        int zbrojPokusaja=10;
 
-        System.out.println("Unesite jedan cijeli broj: ");
-        int odabir = scanner.nextInt();
+        do {
+            System.out.println("Unesite pozitivni broj od 1 do 10:");
+            unesiBroj = scanner.nextInt();
 
-        brojZnamenki = 0;
-        broj = 123456;
+        }while (unesiBroj>10 || unesiBroj<1);
 
-        while (broj != 0) {
-            ++brojZnamenki;
-            broj /= 10;
-        }
+        System.out.println("Ispiši ukupni zbroj pokušaja unosa: " + (zbrojPokusaja++));
+        System.out.println("Ispiši konačni zbroj: " + (unesiBroj++));
 
-        System.out.println("Broj znamenki upisanog broja: " + brojZnamenki);
 
     }
 
