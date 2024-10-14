@@ -7,21 +7,23 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        
         Scanner scanner = new Scanner(System.in);
 
-        int parniBroj=0;
-        int neparniBroj=0;
+        int brojZnamenki;
+        int broj;
 
-        for (int i = 1; i < 10; i++) {
-            if (i % 2 == 0){
-                parniBroj++;
-            }else{
-                neparniBroj++;
-            }
+        System.out.println("Unesite jedan cijeli broj: ");
+        int odabir = scanner.nextInt();
+
+        brojZnamenki = 0;
+        broj = 123456;
+
+        while (broj != 0) {
+            ++brojZnamenki;
+            broj /= 10;
         }
 
-        System.out.println("Ukupni zbroj unesenih pozitivnih cijelih brojeva: "  + (parniBroj + neparniBroj));
+        System.out.println("Broj znamenki upisanog broja: " + brojZnamenki);
 
     }
 
