@@ -1,27 +1,27 @@
 import java.util.Scanner;
 
-//ZAdatak 1. NApišite program koji će izračunati sumu brojeva od 1 do N, gdje je N
-// pozitivan cijeli broj unesen od strane korisnika.
-// N=10
-
 public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        int unesiBroj;
-        int zbrojPokusaja=10;
+        int maxBroj = 10;
+        int[] uneseniBrojevi = new int[4];
 
-        do {
-            System.out.println("Unesite pozitivni broj od 1 do 10:");
-            unesiBroj = scanner.nextInt();
+        System.out.println("Unesi 4 cijela broja: ");
+        System.out.println("Prvi broj: ");
 
-        }while (unesiBroj>10 || unesiBroj<1);
 
-        System.out.println("Ispiši ukupni zbroj pokušaja unosa: " + (zbrojPokusaja++));
-        System.out.println("Ispiši konačni zbroj: " + (unesiBroj++));
+        for (int i = 0; i <= uneseniBrojevi.length; i++) {
+            System.out.println(i + 1 + ". broj: ");
+            uneseniBrojevi[0] = scanner.nextInt();
 
+        }
+        for (int broj : uneseniBrojevi) {
+            if (broj > maxBroj) {
+                System.out.println("Broj koji je veći od 10: " + broj);
+            }
+        }
 
     }
-
 }
