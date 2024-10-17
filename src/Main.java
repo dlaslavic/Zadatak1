@@ -1,37 +1,35 @@
+import javax.swing.text.html.HTMLDocument;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-//Provjeriti teleoperatera preko unesenog broja
-
+//Tražiti od korisnika unos liste stringova sve dok ne napiše "Stop". Nakon toga izbrojati koliko stringova sadrži
+//riječ "Java".
 public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Unesite broj mobitela: ");
-        String phoneNumber = scanner.nextLine();
+        //var test1 = !true;
+        //var test2 = !false;
 
-        String  prva3Broja = phoneNumber.substring(0, 3);
+        List<String> lista = new ArrayList<>();
+        String uneseniString;
+        Integer brojac = 0;
 
-        switch (prva3Broja){
-            case  "095":
-                System.out.println("Telemach");
-                break;
-            case  "099":
-                System.out.println("Simpa");
-                break;
-            case  "091":
-                System.out.println("A1");
-                break;
-            case  "098":
-                System.out.println("HT");
-                break;
-            default:
-                System.out.println("Ostali operateri!");
+        do {
+            System.out.println("Unesite string: ");
+            uneseniString = scanner.nextLine();
+            lista.add(uneseniString);
+        }while (!uneseniString.equals("Stop"));
 
+        for (int i = 0; i< lista.size(); i++){
+            if (lista.get(i).contains("Java"));{
+                brojac++;
+            }
         }
 
+        System.out.println("Broj recenica koje sadrze Java rijec je: " + brojac);
     }
 
 }
