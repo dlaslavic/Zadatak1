@@ -12,17 +12,23 @@ public class Main {
         System.out.println("Unesite broj mobitela: ");
         String phoneNumber = scanner.nextLine();
 
-        Boolean a1 = phoneNumber.startsWith("091");
-        Boolean ht = phoneNumber.startsWith("098");
+        String  prva3Broja = phoneNumber.substring(0, 3);
 
-        if (phoneNumber.startsWith("091")){
-            System.out.println("A1");
-        } else if (phoneNumber.startsWith("098")){
-            System.out.println("HT");
-        } else if (phoneNumber.startsWith("095")){
-            System.out.println("Telemach");
-        } else if (phoneNumber.startsWith("099")) {
-            System.out.println("Simpa");
+        switch (prva3Broja){
+            case  "095":
+                System.out.println("Telemach");
+                break;
+            case  "099":
+                System.out.println("Simpa");
+                break;
+            case  "091":
+                System.out.println("A1");
+                break;
+            case  "098":
+                System.out.println("HT");
+                break;
+            default:
+                System.out.println("Ostali operateri!");
 
         }
 
