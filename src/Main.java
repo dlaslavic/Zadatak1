@@ -1,47 +1,32 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
-//Zadatak: Dodavanje i ispis parnih brojeva.
-//Korisnik unosi 10 brojeva, a program sprema samo parne brojeve u novo polje i zatim ih ispisuje.
-//U programu se ne koristi FOR petlja.
+
 
 public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Unesite 10 brojeva: ");
+        System.out.println("Unesite koliko elemenata zelite popuniti: ");
 
-        int[] uneseniBrojevi = new int[10];
-        int indexParnihBrojeva = 0;
-        int brojParnihBrojeva = 0;
-        int i = 0;
+        int n = scanner.nextInt();
 
-        while (i<uneseniBrojevi.length){
-            System.out.println("Unesite " + (i + 1) + ". broj:");
-            uneseniBrojevi[i] = scanner.nextInt();
-            if (uneseniBrojevi[i] % 2 == 0){
-                brojParnihBrojeva++;
-            }
-            i++;
+        int[] staroPolje = new int[10];
+        List polje = new ArrayList<>();
+
+        var test = staroPolje.length;
+        var test1 = polje.size();
+
+        for (int i = 0; i < n; i++){
+            System.out.println("Unesite vrijednost" + (i + 1) + ". elementa: ");
+            int uneseniElement = scanner.nextInt();
+            polje.add(uneseniElement);
         }
 
-        int[] parniBrojevi = new int[brojParnihBrojeva];
-        i = 0;
-
-        while (i < uneseniBrojevi.length){
-            if (uneseniBrojevi[i] % 2 == 0){
-                parniBrojevi[indexParnihBrojeva] = uneseniBrojevi[i];
-                indexParnihBrojeva = indexParnihBrojeva + 1;
-            }
-
-            i  = i + 1;
-        }
-
-        i = 0;
-
-        while (i < parniBrojevi.length){
-            System.out.println("Rezultat je: " + parniBrojevi[i]);
-            i++;
+        for (int i = 0; i < polje.size(); i++){
+            System.out.println("Vrijednost elementa " + (i+ 1) + " je " + polje.get(i));
 
         }
 
