@@ -8,31 +8,35 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Unesite prvi broj: ");
-        int prviBroj = scanner.nextInt();
-        ispisiVrijednostElementa(prviBroj);
 
-        System.out.println("Unesite drugi broj: ");
-        int drugiBroj = scanner.nextInt();
-        ispisiVrijednostElementa(drugiBroj);
+        List<Integer> listaBrojeva = new ArrayList<>();
 
-        Integer rezultatOduzimanja = oduzmiBrojeve(prviBroj, drugiBroj);
-
-        System.out.println("Rezultat je: " + rezultatOduzimanja);
+        for (int i = 1; i < 2; i++) {
+            listaBrojeva.add(i);
         }
 
-        public static void ispisiVrijednostElementa(Integer element){
+        postojiLiParanBroj(listaBrojeva);
+    }
+
+    public static void ispisiVrijednostElementa(Integer element) {
         // Integer element;
         System.out.println("Vrijednost je: " + element);
+    }
+
+    public static void postojiLiParanBroj(List<Integer> lista) {
+
+        for (Integer broj : lista) {
+            if (broj % 2 == 0) {
+                System.out.println("Paran!");
+                return;
+            }
         }
-
-        public static Integer oduzmiBrojeve(Integer element1, Integer element2){
-        Integer rezultat = element1 - element2;
-        return rezultat;
-
+        System.out.println("Neparan!");
 
     }
+
 }
+
 
 
 
