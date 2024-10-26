@@ -1,4 +1,5 @@
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -16,31 +17,39 @@ public class Main {
 
         List<Integer> listaBrojeva = new ArrayList<>();
 
-        for (int i = 1; i < 10; i++) {
-            listaBrojeva.add(i);
+        System.out.println("Unesite broj elemenata: ");
+        int listabroj = scanner.nextInt();
+
+        for (int i = 0; i < listabroj; i++) {
+            System.out.println("Unesite broj: ");
+            listaBrojeva.add(scanner.nextInt());
         }
 
-        listaJeSortirana(listaBrojeva);
+        provjeraSortiranosti(listaBrojeva);
     }
 
-    public static void listaJeSortirana(List<Integer> listaBrojeva) {
+    public static Boolean provjeraSortiranosti(List<Integer> listaBrojeva) {
 
-        Boolean rezultat = true;
+        Boolean sortirano = true;
 
         for (int i = 1; i < listaBrojeva.size(); i++) {
-            if (listaBrojeva.get(i) > listaBrojeva.get(i)) {
-                System.out.println("Sortirana nije sortirana uzlazno.");
+            if (listaBrojeva.get(i) < listaBrojeva.get(i - 1)) {
+                System.out.println("Lista nije sortirana uzlazno.");
                 sortirano = false;
                 break;
             }
         }
-        if (sortirano == true)
-            System.out.println("Nije sortirana!");
+
+        if (sortirano){
+            System.out.println("Lista je sortirana uzlazno!");
+        }
+
+        return sortirano;
+
+        }
+
     }
 
-         return sortirano;
-
-}
 
 
 
