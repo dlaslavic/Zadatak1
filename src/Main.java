@@ -1,55 +1,42 @@
 
+
 import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 
-//Napraviti funkciju koja provjerava da li je lista uzlazno sortirana.
-//Prethodno listu popunjava korisnik svojim unosima.
-//Funkcija treba vratiti true ili false.
-//Na kraju programa korisniku ispisati da li je lista sortirana ili nije.
+//Telefonski imenik:
+// - Napravi program koji simulira telefonski imenik koristeći dvije paralelne liste
+// - Lista u koju se spremaju imena i lista u koju se spremaju brojevi
+// - Kod prvog odabira korisnik unosi ime i broj koji se spremaju u svoje liste
+// - Korisnik ima mogućnost odabira te za svaki odabir treba omogućiti određenu funkcionalnost sa slike
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static <Osoba> void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         List<Integer> listaBrojeva = new ArrayList<>();
+        List<String> popisImena = new ArrayList<>();
 
-        System.out.println("Unesite broj elemenata: ");
-        int listabroj = scanner.nextInt();
+        System.out.println("Unesite ime ili broj: ");
+        int broj = scanner.nextInt();
+        var ime = scanner.nextInt();
 
-        for (int i = 0; i < listabroj; i++) {
-            System.out.println("Unesite broj: ");
+        for (int i = 0; i < broj; i++) {
+            System.out.println("Unesite željenu vrijednost: ");
             listaBrojeva.add(scanner.nextInt());
+            popisImena.add(scanner.next());
         }
 
-        provjeraSortiranosti(listaBrojeva);
+        int trenutniBroj = listaBrojeva.get(0);
+
+        for (int i = 0; i < listaBrojeva.size(); i++){
+
+        }
     }
-
-    public static Boolean provjeraSortiranosti(List<Integer> listaBrojeva) {
-
-        Boolean sortirano = true;
-
-        for (int i = 1; i < listaBrojeva.size(); i++) {
-            if (listaBrojeva.get(i) < listaBrojeva.get(i - 1)) {
-                System.out.println("Lista nije sortirana uzlazno.");
-                sortirano = false;
-                break;
-            }
-        }
-
-        if (sortirano){
-            System.out.println("Lista je sortirana uzlazno!");
-        }
-
-        return sortirano;
-
-        }
-
-    }
-
+}
 
 
 
