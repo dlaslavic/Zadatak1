@@ -7,82 +7,74 @@ import java.util.List;
 import java.util.Scanner;
 
 
-//Zadatak_1.
-//Tražiti od korisnika da unese količinu novca koju treba dobiti natrag (kusur) od 423,52.
-//Ispisati sve novčanice koje morate dati natrag kupcu.
-//Apoeni novčanica koje imatea su: 500, 200, 100, 50, 20, 10, 5, 2, 1, o.5, 0.2, 0.1, 0.05, 0.02, 0.01
-
-//Rezultat s primjera: 200, 200, 20, 2, 1, 0,5, 0,02
 
 public class Main {
+
+    /* STATISTIKA RIJECI
+     * Napravi program koji učitava rečenicu i ispisuje:
+     * 1. Sve riječi duže od 5 slova
+     * 2. Najduzu rijec
+     * 3. Prosjecnu duljinu rijeci
+     */
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Unesi neku rečenicu: ");
+        String unesenaRecenica = scanner.nextLine();
 
-        System.out.print("Unesite iznos kusura: ");
-        BigDecimal iznos = new BigDecimal(scanner.nextLine());
-        double[] kusur = racunajKusur(iznos);
+        List<String> recenicaLista = new ArrayList<>();
 
-        System.out.println(kusur[0] + " novcanica po 200€");
-        System.out.println(kusur[1] + " novcanica od 20€");
-        System.out.println(kusur[2] + " kovanica od 2€");
-        System.out.println(kusur[3] + " kovanica od 1€");
-        System.out.println(kusur[4] + " kovanica od 50Centi");
-        System.out.println(kusur[5] + " kovanica od 2Centa");
+        for (String rijec : unesenaRecenica.split(" ")) {
+            recenicaLista.add(rijec);
+        }
 
+        List<String> rijeciDuzeOdPet = rijeciDuzeOdPetSlova(recenicaLista);
+        String najduzaRijec = najduzaRijec(recenicaLista);
+        float prosjekDuljine = prosjecnaDuljinaRijeci(recenicaLista); //4.5
 
-        System.out.println(provjeriKusur(iznos, kusur));
-
+        System.out.println("Riječi duže od 5 slova: " + rijeciDuzeOdPet);
+        System.out.println("Najduža riječ: " + najduzaRijec);
+        System.out.printf("Prosječna duljina riječi: " + prosjekDuljine);
     }
 
+    private static List<String> rijeciDuzeOdPetSlova(List<String> rijeci) {
+        List<String> duzeOdPet = new ArrayList<>();
 
-    public static double[] racunajKusur(BigDecimal iznos){
-        double[] kusur = {0, 0, 0, 0, 0, 0};
+//        for (int i = 0; i < rijeci.size(); i++){
+//            if (rijeci.get(i).length() > 5) {
+//                duzeOdPet.add(rijeci.get(i));
+//            }
+//        }
 
-        while (iznos.doubleValue() >= 200){
-            iznos =iznos.subtract(new BigDecimal("200")); kusur[0]+=1;
+        for (String rijec : rijeci) {
+            if (rijec.length() > 5) {
+                duzeOdPet.add(rijec);
+            }
         }
-        while (iznos.doubleValue() >= 20){
-            iznos = iznos.subtract(new BigDecimal("20")); kusur[1] += 1;
-
-        }
-        while (iznos.doubleValue() >= 2){
-            iznos = iznos.subtract(new BigDecimal("2")); kusur[2] += 1;
-        }
-
-        while (iznos.doubleValue() >= 1){
-        iznos = iznos.subtract(new BigDecimal("1")); kusur[3] += 1;
-
-        }
-        while (iznos.doubleValue() >= 0.5) {
-        iznos = iznos.subtract(new BigDecimal("0.5")); kusur[4] += 1;
-
-        }
-        while (iznos.doubleValue() >= 0.02) {
-        iznos = iznos.subtract(new BigDecimal("0.02")); kusur[5] += 1;
-
-        }
-
-        return kusur;
+        return duzeOdPet;
     }
 
-    public static boolean provjeriKusur(BigDecimal iznos, double[] kusur){
-
-        double v1 = kusur[0] * 200;
-        double v2 = kusur[1] * 20;
-        double v3 = kusur[2] * 2;
-        double v4 = kusur[3] * 1;
-        double v5 = kusur[4] * 0.5;
-        double v6 = kusur[5] * 0.02;
-        double ukupno = v1 + v2 + v3 + v4 + v5 + v6;
-        System.out.println(iznos + " u odnosu na " + ukupno);
-
-        return (iznos.doubleValue() == ukupno);
-
+    private static String najduzaRijec(List<String> rijeci) {
+        String najduza = "";
+        for (String rijec : rijeci) {
+            if (rijec.length() > najduza.length()) {
+                najduza = rijec;
+            }
+        }
+        return najduza;
     }
 
+    private static float prosjecnaDuljinaRijeci(List<String> rijeci) {
+        float ukupnaDuljina =18;
+        for (String rijec : rijeci) {
+            ukupnaDuljina = ukupnaDuljina + rijec.length();
+        }
+        float rezultat = ukupnaDuljina / rijeci.size(); // 4.5
+
+        return rezultat; // 4.5
+    }
 }
-
 
 
 
