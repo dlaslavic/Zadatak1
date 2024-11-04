@@ -10,25 +10,25 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Pas pasRex = new Pas("Rex", "Njemacki ovcar", 10);
-        Pas pasOskar = new Pas("Oskar", "Labrador", 5);
+        Polaznik polaznik1 = new Polaznik("Jura", "Juric");
+        Polaznik polaznik2 = new Polaznik("Pero", "Peric", 45, "Musko");
+        Polaznik polaznik3 = new Polaznik("Miro", "Miric");
 
-        String ime1 = pasRex.dohvatiIme();
-        String pasmina1 = pasRex.dohvatiPasminu();
-        String goidna1 = pasRex.dohvatiGodinuUStringu();
 
-        String ime2 = pasOskar.dohvatiIme();
-        String pasmina2 = pasOskar.dohvatiPasminu();
-        Integer goidna2 = pasOskar.dohvatiGodinu();
 
-        Integer staraGodina = pasOskar.dohvatiGodinu();
+        String ime = polaznik1.getIme();
+        String prezime = polaznik1.getPrezime();
 
-        pasOskar.promjeniGodinu(7);
+        Integer dob2 = polaznik2.getDob();
+        polaznik2.promijeniGodinu(42);
+        Integer novaDob2 = polaznik2.getDob();
 
-        Integer novaGodina = pasOskar.dohvatiGodinu();
+        String ime3 = polaznik3.getIme();
+        String prezime3 = polaznik3.getPrezime();
 
-        System.out.println(pasRex.dohvatiIme());
-        System.out.println(pasOskar.dohvatiIme());
+        System.out.println(polaznik1.getIme());
+        System.out.println(polaznik1.getPrezime());
+
 
     }
 }
