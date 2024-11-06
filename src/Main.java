@@ -5,51 +5,55 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//Kreirajte program koji omogućava unos, pregled i analizu podataka o studentima. Svaki student ima svoje ime, prezime, broj indeksa i prosjek ocjena.
+//Zahtjevi:
+//Kreiranje klase Student:
+//Kreirajte klasu Student s privatnim atributima:
+//ime (tipa String)
+//prezime (tipa String)
+//brojIndeksa (tipa String)
+//prosjekOcjena (tipa double)
+//Dodajte konstruktor koji inicijalizira sve atribute.
+//Kreirajte metode getIme(), getPrezime(), getBrojIndeksa(), i getProsjekOcjena() kako bi omogućili dohvaćanje tih vrijednosti.
+//Glavna klasa:
+//U glavnoj klasi, kreirajte listu ArrayList<Student> kako biste pohranili sve unesene studente.
+//Koristite metodu Scanner za unos podataka o studentima.
+//Funkcionalnosti programa:
+//Unos podataka: Omogućite korisniku unos podataka za više studenata. Nakon unosa svakog studenta, korisnik treba imati opciju da unese još jednog ili završi unos.
+//Ispis svih studenata: Nakon unosa svih studenata, ispišite popis sa svim podacima o studentima.
+//Analiza podataka:
+//Pronađite i ispišite podatke o studentu s najvišim prosjekom.
+//Pronađite i ispišite podatke o studentu s najnižim prosjekom.
+//Ispišite prosjek ocjena svih studenata.
 
-//Zadatak_1.
-//Kreirajte klasu Proizvod s privatnim atributima:
-//naziv (tipa String),
-//cijena (tipa BigDecimal)
-//popust( tipa BigDecimal)
-//Dodajte javni konstruktor za inicijalizaciju naziv i cijena
-//Kreirajte public metodu postaviPropust koja omogućava postavljanje popusta u postocima (tip BigDecimal)
-//Dodajte public metodu izracunajCijenu koja vraća konačnu cijenu proizvoda nakon što je popust primijenjen.
-//U glvanoj klasi kreirajte objekt klase Proizvod, postavite naziv, cijenu i popust te ispišite konačnu cijenu proizvoda.
 
-//Opcionalno:
-//Od korisnika traziti unos velicine polja te nakon toga kreirati onoliko objekata koliko je korisnik unio.
-//Za svaki proizvod (objekt) potrebno je napraviti sve korake iz glavnog dijela zadatka.
-
-public class Main {
-    public static void main(String[] args) {
+    public static void main (String[] args) {
         Scanner scanner = new Scanner(System.in);
 
 
-        BigDecimal test = BigDecimal.valueOf(674);
-        System.out.println("Upišite za koliko proizvoda želite izračunati popust: ");
-        int brojObjekata = scanner.nextInt();
+        ArrayList<Student> listaStudenata = new ArrayList<Student>();
+        Student student1 = new Student("", "", "", 0.0);
 
-        for (int i = 0; i < brojObjekata; i++){
-            izracunajPopust();
-        }
+
+        System.out.println("Upišite koliko studenata želite upisati: ");
+        int brojStudenata = scanner.nextInt();
+
+         }
 
     }
+        public static void podaciStudenta() {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Upišite ime studenta:");
+            String ime = scanner.nextLine();
 
-    public static void izracunajPopust() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Upišite naziv proizvoda:");
-        String nazivProizvoda = scanner.nextLine();
+            System.out.println("Upišite prezime studenta:");
+            String prezime = scanner.nextLine();
 
-        System.out.println("Upišite cijenu proizvoda:");
-        BigDecimal cijenaProizvoda = scanner.nextBigDecimal();
+            System.out.println("Upišite broj indeksa studenta:");
+            String brojIndeksa = scanner.nextLine();
 
-        System.out.println("Upišite popust na cijenu proizvoda:");
-        BigDecimal popustProizvoda = scanner.nextBigDecimal();
-
-        Proizvod proizvod = new Proizvod(nazivProizvoda, cijenaProizvoda);
-
-        proizvod.postaviPopust(popustProizvoda);
-        System.out.println("Cijena proizvoda nakon popusta je " + proizvod.izracunajCijenu());
+            System.out.println("Upišite prosjek ocjena:");
+            Double prosjekOcjena = scanner.nextDouble();
 
     }
 }
