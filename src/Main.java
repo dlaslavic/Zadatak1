@@ -16,18 +16,38 @@ import java.util.Scanner;
 //Dodajte public metodu izracunajCijenu koja vraća konačnu cijenu proizvoda nakon što je popust primijenjen.
 //U glvanoj klasi kreirajte objekt klase Proizvod, postavite naziv, cijenu i popust te ispišite konačnu cijenu proizvoda.
 
-    public class Main {
-        public static void main(String[] args) {
-         Scanner scanner = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
 
-            Proizvod proizvod = new Proizvod("Mobitel", 200.00);
 
-        BigDecimal cijena = BigDecimal.valueOf(200.00);
-        BigDecimal popust = BigDecimal.valueOf(0.80);
-        BigDecimal konacnaCijena = cijena.multiply(popust);
+        BigDecimal test = BigDecimal.valueOf(674);
+        System.out.println("Upišite za koliko proizvoda želite izračunati popust: ");
+        int brojObjekata = scanner.nextInt();
+
+        for (int i = 0; i < brojObjekata; i++){
+            izracunajPopust();
+        }
 
     }
 
+    public static void izracunajPopust() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Upišite naziv proizvoda:");
+        String nazivProizvoda = scanner.nextLine();
+
+        System.out.println("Upišite cijenu proizvoda:");
+        BigDecimal cijenaProizvoda = scanner.nextBigDecimal();
+
+        System.out.println("Upišite popust na cijenu proizvoda:");
+        BigDecimal popustProizvoda = scanner.nextBigDecimal();
+
+        Proizvod proizvod = new Proizvod(nazivProizvoda, cijenaProizvoda);
+
+        proizvod.postaviPopust(popustProizvoda);
+        System.out.println("Cijena proizvoda nakon popusta je " + proizvod.izracunajCijenu());
+
+    }
 }
 
-}
+
