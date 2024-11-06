@@ -16,6 +16,10 @@ import java.util.Scanner;
 //Dodajte public metodu izracunajCijenu koja vraća konačnu cijenu proizvoda nakon što je popust primijenjen.
 //U glvanoj klasi kreirajte objekt klase Proizvod, postavite naziv, cijenu i popust te ispišite konačnu cijenu proizvoda.
 
+//Opcionalno:
+//Od korisnika traziti unos velicine polja te nakon toga kreirati onoliko objekata koliko je korisnik unio.
+//Za svaki proizvod (objekt) potrebno je napraviti sve korake iz glavnog dijela zadatka.
+
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
