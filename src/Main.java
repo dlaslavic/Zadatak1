@@ -1,75 +1,45 @@
 
+import java.io.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+//Napravite klsu student s osnovnim informacijama (ime, prezime, brIndexa).
+//Napravite 3 studenta unutar maina te zapišite sve informacije o svakom studentu u datoteku koja
+//se naziva student.txt.
+//Ispišite sve podatke u datoteku da bude pregleedno i citljivo.
+//Nakon upisa u datoteku na kraju prebrojite koliko je slova zapisao u datoteci te ispišite tu informaciju korisniku.
 
 
 public class Main {
-    static List<Zaposlenik> zaposlenici = new ArrayList<>();
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner scanner = new Scanner(System.in);
-        int number;
+        Student student1 = new Student("Pero", "Perić", "012");
+        Student student2 = new Student("Ivo", "Ivić", "013");
+        Student student3 = new Student("Jura", "Jurić", "014");
 
-            do {
-            System.out.println("Za unos stalnog zaposlenika birajte 1 za unos sezonskog zaposlenika birajte 2, " +
-                    "za prekid unosa odaberi 3");
+        Reader in = new StringReader("Student");
+        Writer out = new FileWriter("student.txt");
+        PrintWriter easyOut = new PrintWriter(out);
 
-            number = scanner.nextInt();
+        easyOut.println(student1);
+        easyOut.write("\n");
+        easyOut.println(student2);
+        easyOut.write("\n");
+        easyOut.println(student3);
 
-            if (number == 3) {
-                break;
-            }
+        int i = 0;
 
-            System.out.println("Ime zaposlenika : ");
-            String ime = scanner.next();
-
-
-            System.out.println("Osnovna placa : ");
-            BigDecimal placa = scanner.nextBigDecimal();
-
-
-            System.out.println("Broj radnih sati : ");
-            Double brojRadnihSati = scanner.nextDouble();
-
-            switch (number) {
-                case 1:
-                    unosStalnogZaposlenika(ime, placa, brojRadnihSati);
-                    break;
-                case 2:
-                    unosSezonskogZaposlenika(ime, placa, brojRadnihSati);
-                    break;
-                default:
-                    System.out.println("Pogresan unos pokusaj ponovo");
-
-                }
-
-        } while (true);
-
-        System.out.println("Lista zaposlenika: ");
-        for (Zaposlenik zaposlenik : zaposlenici) {
-            System.out.println(zaposlenik.toString() + " izracun place sa bonusom " + zaposlenik.izracunPlace());
-        }
-        //Ovo je duza verzija for petlje preko indexa
-        //for (int i = 0; i< zaposlenici.size(); i++){
-        //zaposlenici.get(i).toString();
+        int nextChar;
+        while ((nextChar = in.read()) != -1){
+            out.write(nextChar);
+            i++;
+            System.out.println("ASCII znakova u fileu je: " + nextChar);
         }
 
-        // Spremili smo oba tipa zaposlenika u jednu listu kako bi imali samo u jednoj listi sve zaposlenike te
-        // izbjegli dvije for petlje za ispis
-
-
-        public static void unosStalnogZaposlenika(String ime, BigDecimal placa, Double brojRadnihSati) {
-        Zaposlenik stalniZaposlenik = new StalniZaposlenik(ime, placa, brojRadnihSati);
-        zaposlenici.add(stalniZaposlenik);
-        }
-
-        public static void unosSezonskogZaposlenika(String ime, BigDecimal placa, Double brojRadnihSati) {
-        Zaposlenik sezonskiZaposlenik = new SezonskiZaposlenik(ime, placa, brojRadnihSati);
-        zaposlenici.add(sezonskiZaposlenik);
+        easyOut.close();
 
     }
 

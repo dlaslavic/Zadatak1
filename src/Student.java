@@ -5,7 +5,7 @@ public class Student {
     private  Double prosjekOcjena;
 
 
-    public Student (String ime, String prezime, String brojIndeksa, Double prosjekOcjena){
+    public Student (String ime, String prezime, String brojIndeksa){
         this.ime = ime;
         this.prezime = prezime;
         this.brojIndeksa = brojIndeksa;
