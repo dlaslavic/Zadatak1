@@ -1,48 +1,72 @@
+import java.util.HashSet;
+import java.util.TreeSet;
 
-import java.io.*;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-//Napravite klsu student s osnovnim informacijama (ime, prezime, brIndexa).
-//Napravite 3 studenta unutar maina te zapišite sve informacije o svakom studentu u datoteku koja
-//se naziva student.txt.
-//Ispišite sve podatke u datoteku da bude pregleedno i citljivo.
-//Nakon upisa u datoteku na kraju prebrojite koliko je slova zapisao u datoteci te ispišite tu informaciju korisniku.
 
 
 public class Main {
+    public static void main(String[] args) {
+        kreirajStudente();
+        kreirajGradove();
+        kreirajZaposlenike();
+    }
 
-    public static void main(String[] args) throws IOException {
+    static void  kreirajStudente() {
+        HashSet<String> studenti = new HashSet<>();
+        studenti.add("Marko");
+        studenti.add("Ivo");
+        studenti.add("Ana");
+        studenti.add("Borna");
 
-        Student student1 = new Student("Pero", "Perić", "012");
-        Student student2 = new Student("Ivo", "Ivić", "013");
-        Student student3 = new Student("Jura", "Jurić", "014");
-
-        Reader in = new StringReader("Student");
-        Writer out = new FileWriter("student.txt");
-        PrintWriter easyOut = new PrintWriter(out);
-
-        easyOut.println(student1);
-        easyOut.write("\n");
-        easyOut.println(student2);
-        easyOut.write("\n");
-        easyOut.println(student3);
-
-        int i = 0;
-
-        int nextChar;
-        while ((nextChar = in.read()) != -1){
-            out.write(nextChar);
-            i++;
-            System.out.println("ASCII znakova u fileu je: " + nextChar);
+        if (studenti.contains("Borna")) {
+            System.out.println("Borna postoji");
+        } else {
+            System.out.println("Borna NE postoji");
         }
+        System.out.println(studenti);
+        studenti.remove("Borna");
+        System.out.println(studenti);
+    }
 
-        easyOut.close();
+    static void kreirajGradove() {
+        TreeSet<String> gradovi = new TreeSet<>();
+        gradovi.add("Zagreb");
+        gradovi.add("Rijeka");
+        gradovi.add("Osijek");
+        gradovi.add("Split");
 
+        System.out.println(gradovi);
+        System.out.println("Prvi grad je " + gradovi.first());
+        System.out.println("Zadnji grad je " + gradovi.last());
+        gradovi.remove("Rijeka");
+        System.out.println(gradovi);
+    }
+
+    static void kreirajZaposlenike() {
+        HashSet<String> zaposleniciA = new HashSet<>();
+        zaposleniciA.add("Marko");
+        zaposleniciA.add("Ivo");
+        zaposleniciA.add("Ana");
+        zaposleniciA.add("Borna");
+
+        HashSet<String> zaposleniciB = new HashSet<>();
+        zaposleniciB.add("Lara");
+        zaposleniciB.add("Jura");
+        zaposleniciB.add("Borna");
+        zaposleniciB.add("Dejan");
+
+        System.out.println(zaposleniciA);
+        System.out.println(zaposleniciB);
+
+        for (String zaposlenik : zaposleniciA) {
+            if (zaposleniciB.contains(zaposlenik)) {
+                System.out.println(zaposlenik + " radi u oba odjela");
+            }
+        }
+        for (String zaposlenik : zaposleniciA) {
+            if (!zaposleniciB.contains(zaposlenik)) {
+                System.out.println(zaposlenik + " radi SAMO u odjelu A");
+            }
+        }
     }
 
 }
-
-
