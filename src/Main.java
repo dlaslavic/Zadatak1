@@ -8,26 +8,28 @@ import java.sql.Statement;
 
 public class Main {
     public static void main(String[] args) {
-        selectExample();
+
+        //Ne znam kako bih ubacio u switch case:
+        insertExample();
         updateExample();
         deleteExample();
-        insertExample();
-        
-    }
+        selectExample();
 
-    private static void deleteExample() {
+    }
+    private static void insertExample() {
         Connection connection = DatabaseService.createConnection();
 
         try {
             // Izvršavanje SQL upita
-            String query = "DELETE FROM Drzava WHERE IDDrzava = ?";
+            String query = "INSERT INTO Grad VALUES (?)";
             PreparedStatement statement = connection.prepareStatement(query);
 
-            statement.setString(1, "9");
+            statement.setString(1, "Karlovac");
 
             Integer result = statement.executeUpdate();
 
             // Ispis rezultata
+
             System.out.println("Rezultat je " + result);
             statement.close();
         } catch (Exception e) {
@@ -48,11 +50,11 @@ public class Main {
 
         try {
             // Izvršavanje SQL upita
-            String query = "UPDATE Drzava SET Naziv = ? WHERE IDDrzava = ?";
+            String query = "UPDATE Grad SET Naziv = ? WHERE IDDrzava = ?";
             PreparedStatement statement = connection.prepareStatement(query);
 
-            statement.setString(1, "Portugal");
-            statement.setString(2, "9");
+            statement.setString(1, "Karlovac");
+            statement.setString(2, "1");
 
             Integer result = statement.executeUpdate();
 
@@ -72,21 +74,19 @@ public class Main {
         }
     }
 
-
-    private static void insertExample() {
+    private static void deleteExample() {
         Connection connection = DatabaseService.createConnection();
 
         try {
             // Izvršavanje SQL upita
-            String query = "INSERT INTO Drzava (Naziv) VALUES (?)";
+            String query = "DELETE FROM Grad WHERE IDDrzava = ?";
             PreparedStatement statement = connection.prepareStatement(query);
 
-            statement.setString(1, "Slovenija");
+            statement.setString(17, "1");
 
             Integer result = statement.executeUpdate();
 
             // Ispis rezultata
-
             System.out.println("Rezultat je " + result);
             statement.close();
         } catch (Exception e) {
@@ -101,20 +101,19 @@ public class Main {
             }
         }
     }
-
 
     private static void selectExample() {
         Connection connection = DatabaseService.createConnection();
 
         try {
             // Izvršavanje SQL upita
-            String query = "SELECT * FROM Drzava ORDER BY Naziv";
+            String query = "SELECT * FROM Grad ORDER BY Naziv";
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
             // Ispis rezultata
             while (resultSet.next()) {
-                System.out.println("ID: " + resultSet.getInt("IDDrzava"));
+                System.out.println("ID: " + resultSet.getInt("IDGrad"));
                 System.out.println("Naziv: " + resultSet.getString("Naziv"));
             }
 
